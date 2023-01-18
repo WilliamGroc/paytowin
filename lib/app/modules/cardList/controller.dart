@@ -11,8 +11,8 @@ class CardListController extends GetxController {
   CardListController(this.repository);
 
   @override
-  void onInit() {
-    _cards.value = repository.getAll();
+  void onInit() async {
+    _cards.value = await repository.getAll();
     super.onInit();
   }
 

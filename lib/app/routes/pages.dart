@@ -12,8 +12,8 @@ part 'home_routes.dart';
 var cardRepository = CardRepository();
 
 var pages = [
-  GetPage(name: Routes.HOME, page: () => HomePage()),
-  GetPage(name: Routes.CARD_LIST, page: () => CardListPage(), binding: CardListBinding(cardRepository)),
-  GetPage(name: Routes.CARD_DETAIL, page: () => CardDetailPage(), binding: CardDetailBinding(cardRepository)),
+  GetPage(name: Routes.HOME, page: () => const HomePage()),
+  GetPage(name: Routes.CARD_LIST, page: () => const CardListPage(), binding: CardListBinding(cardRepository), transition: Transition.downToUp),
+  GetPage(name: Routes.CARD_DETAIL, page: () => const CardDetailPage(), binding: CardDetailBinding(cardRepository)),
   GetPage(name: Routes.BOARD_GAME, page: () => BoardGamePage())
 ];

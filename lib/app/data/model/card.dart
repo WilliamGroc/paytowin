@@ -1,36 +1,44 @@
 class CardModel {
-  late int id;
-  late String name;
-  late String description;
-  late int strength;
-  late int shield;
-  late String image;
+  late String? id;
+  late String? name;
+  late String? text;
+  late String? manaCost;
+  late String? type;
+  late List<String>? colors;
+  late String? power;
+  late String? toughness;
+  late String? imageUrl;
 
-  CardModel(
-      {required this.id,
-      required this.name,
-      required this.description,
-      required this.strength,
-      required this.shield,
-      required this.image});
+  CardModel({this.id, this.name, this.text, this.manaCost, this.type, this.colors, this.power, this.toughness, this.imageUrl});
 
   CardModel.fromJson(Map<String, dynamic> json) {
     this.id = json['id'];
     this.name = json['name'];
-    this.description = json['description'];
-    this.strength = json['strength'];
-    this.shield = json['shield'];
-    this.image = json['image'];
+    this.text = json['text'];
+    this.manaCost = json['manaCost'];
+    this.type = json['type'];
+    this.colors = List.from(json['colors']).cast<String>();
+    this.power = json['power'];
+    this.toughness = json['toughness'];
+    this.imageUrl = json['imageUrl'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = this.id;
     data['name'] = this.name;
-    data['description'] = this.description;
-    data['strength'] = this.strength;
-    data['shield'] = this.shield;
-    data['image'] = this.image;
+    data['text'] = this.text;
+    data['manaCost'] = this.manaCost;
+    data['type'] = this.type;
+    data['colors'] = this.colors;
+    data['power'] = this.power;
+    data['toughness'] = this.toughness;
+    data['imageUrl'] = this.imageUrl;
     return data;
+  }
+
+  @override
+  String toString() {
+    return '${this.id}';
   }
 }

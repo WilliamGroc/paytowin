@@ -29,13 +29,15 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  cupertino_icons: ^1.0.2
+  cupertino_icons: 1.0.5
   flutter:
     sdk: flutter
   get: ^4.6.5
+  http: 0.13.5
+  getwidget: 3.0.1
 
 dev_dependencies:
-  flutter_lints: ^2.0.0
+  flutter_lints: 2.0.1
   flutter_test:
     sdk: flutter
 
@@ -50,8 +52,8 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
-    - lib/assets/cards/
-    
+    - lib/assets/
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

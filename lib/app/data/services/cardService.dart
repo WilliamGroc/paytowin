@@ -1,34 +1,19 @@
 import 'package:paytowin/app/data/model/card.dart';
 
-import '../provider/mock_data.dart';
+import '../provider/CardProviderAPI.dart';
 
 class CardRepository {
-  late var dataset = <CardModel>[];
+  var cardProvider = CardProviderAPI();
 
-  CardRepository(){
-    dataset = data;
+  Future<List<CardModel>> getAll() {
+    return cardProvider.getCards();
   }
 
-  getAll() {
-    return dataset;
-  }
+  Future<CardModel> getById(String? id) async {
+    if (id != null) {
+      return cardProvider.getCard(id);
+    }
 
-  CardModel getId(id) {
-    return dataset.firstWhere((element) => element.id == id);
-  }
-
-  void delete(id) {
-    dataset.removeWhere((element) => element.id == id);
-  }
-
-  CardModel edit(CardModel obj) {
-    var index = dataset.indexWhere((element) => element.id == obj.id);
-    dataset.replaceRange(index, index, [obj]);
-    return obj;
-  }
-
-  CardModel add(CardModel obj) {
-    dataset.add(obj);
-    return obj;
+    return CardModel();
   }
 }
