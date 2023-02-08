@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:paytowin/app/data/model/cardColor.dart';
 
 class AppColors {
   static const primary = Color(0xff182747);
@@ -16,28 +17,28 @@ class AppColors {
 }
 
 class CardColor {
-  static Color getColor(String color) {
+  static Color getColor(CardColors color) {
     switch (color) {
-      case 'W':
+      case CardColors.W:
         return AppColors.white;
-      case 'U':
+      case CardColors.U:
         return AppColors.blue;
-      case 'R':
+      case CardColors.R:
         return AppColors.red;
-      case 'B':
+      case CardColors.B:
         return AppColors.black;
-      case 'G':
+      case CardColors.G:
         return AppColors.green;
       default:
         return AppColors.gold;
     }
   }
 
-  static List<Color> getColors(List<String> colors) {
+  static List<Color> getColors(List<CardColors> colors) {
     return colors.map((color) => CardColor.getColor(color)).toList();
   }
 
-  static List<Color> getGradientColor(List<String> strColors){
+  static List<Color> getGradientColor(List<CardColors> strColors){
     var colors = getColors(strColors);
     if(colors.length == 1){
       colors.add(colors[0]);

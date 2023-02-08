@@ -1,10 +1,12 @@
+import 'package:paytowin/app/data/model/cardColor.dart';
+
 class CardModel {
   late String? id;
   late String? name;
   late String? text;
   late String? manaCost;
   late String? type;
-  late List<String>? colors;
+  late List<CardColors>? colors;
   late String? power;
   late String? toughness;
   late String? imageUrl;
@@ -17,7 +19,7 @@ class CardModel {
     this.text = json['text'];
     this.manaCost = json['manaCost'];
     this.type = json['type'];
-    this.colors = List.from(json['colors']).cast<String>();
+    this.colors = List.from(json['colors']).map((color) => CardColors.values.firstWhere((cardColor) => cardColor.name == color)).toList();
     this.power = json['power'];
     this.toughness = json['toughness'];
     this.imageUrl = json['imageUrl'];

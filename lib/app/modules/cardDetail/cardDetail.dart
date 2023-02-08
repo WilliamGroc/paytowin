@@ -4,6 +4,7 @@ import 'package:getwidget/components/loader/gf_loader.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:paytowin/app/core/theme/colors.dart';
 import 'package:paytowin/app/core/utils/ManaCost.dart';
+import 'package:paytowin/app/data/model/cardColor.dart';
 
 import 'controller.dart';
 
@@ -21,7 +22,7 @@ class CardDetailPage extends GetView<CardDetailController> {
                     gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: CardColor.getGradientColor(this.controller.card.colors ?? ['W']),
+                  colors: CardColor.getGradientColor(this.controller.card.colors ?? [CardColors.W]),
                 )),
                 child: Column(
                   children: [

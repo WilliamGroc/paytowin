@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:paytowin/app/routes/pages.dart';
-
+import 'package:paytowin/app/core/components/searchBar.dart';
+import 'components/cardTile.dart';
 import 'controller.dart';
 
 class CardListPage extends GetView<CardListController> {
@@ -16,25 +16,13 @@ class CardListPage extends GetView<CardListController> {
                     child: Column(
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: const Text('Search bar'),
-                ),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    child: SearchBar(
+                      onChange: (value) => this.controller.filter = value,
+                    )),
                 Wrap(
                   direction: Axis.horizontal,
-                  children: this
-                      .controller
-                      .cards
-                      .map((e) => InkWell(
-                          onTap: () => Get.toNamed(Routes.CARD_DETAIL.replaceFirst(':id', e.id.toString())),
-                          child: Container(
-                              padding: const EdgeInsets.all(4),
-                              child: e.imageUrl != null
-                                  ? Image.network(
-                                      e.imageUrl?.replaceFirst('http', 'https') ?? '',
-                                      width: MediaQuery.of(context).size.width / 2 - 8,
-                                    )
-                                  : Image.asset('lib/assets/mtg_back.jpg', width: MediaQuery.of(context).size.width / 2 - 8))))
-                      .toList(),
+                  children: this.controller.cards.map((card) => CardTile(cardData: card)).toList(),
                 ),
               ],
             )))));

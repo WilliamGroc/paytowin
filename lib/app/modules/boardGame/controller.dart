@@ -1,9 +1,19 @@
 import 'package:get/get.dart';
+import 'package:paytowin/app/data/model/card.dart';
+import 'package:paytowin/app/data/services/cardService.dart';
 
 class BoardGameController extends GetxController {
-  BoardGameController();
+  final CardRepository cardRepository;
 
-  final _obj = ''.obs;
-  set obj(value) => this._obj.value = value;
-  get obj => this._obj.value;
+  final myHand = <CardModel>[];
+  final opponentHand = <CardModel>[];
+  int turnCount = 0;
+
+  BoardGameController(this.cardRepository);
+
+  void initGame() {}
+
+  void playGard() {}
+
+  void drawCard() {}
 }
