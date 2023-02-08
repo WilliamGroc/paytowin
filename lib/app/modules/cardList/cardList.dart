@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:paytowin/app/core/components/searchBar.dart';
+import 'package:paytowin/app/modules/cardList/components/searchBar.dart';
+import 'components/filters/cardFilterModal.dart';
 import 'components/cardTile.dart';
 import 'controller.dart';
 
@@ -16,13 +17,28 @@ class CardListPage extends GetView<CardListController> {
                     child: Column(
               children: [
                 Container(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: SearchBar(
-                      onChange: (value) => this.controller.filter = value,
+                    padding: const EdgeInsets.all(8),
+                    child: Flex(
+                      direction: Axis.horizontal,
+                      children: [
+                        Expanded(
+                          child: SearchBar(
+                            onChange: (value) => this.controller.filterSearch = value,
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                          child: CardFilterModal(),
+                        )
+                      ],
                     )),
                 Wrap(
                   direction: Axis.horizontal,
-                  children: this.controller.cards.map((card) => CardTile(cardData: card)).toList(),
+                  children: this
+                      .controller
+                      .cards
+                      .map((card) => CardTile(cardData: card))
+                      .toList(),
                 ),
               ],
             )))));
