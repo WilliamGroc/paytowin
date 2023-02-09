@@ -3,9 +3,12 @@ import 'dart:convert';
 import 'package:paytowin/app/data/model/card.dart';
 import 'package:http/http.dart' as http;
 
-class CardProviderAPI {
+import 'ICardProvider.dart';
+
+class CardProviderAPI implements CardProvider {
   static const apiUrl = 'https://api.magicthegathering.io/v1';
 
+  @override
   Future<List<CardModel>> getCards() async {
     List<CardModel> cards = [];
 
@@ -18,6 +21,7 @@ class CardProviderAPI {
     return cardList.reduce((value, element) => [...value, ...element]).toList();
   }
 
+  @override
   Future<CardModel> getCard(String id) async {
     var response = await http.get(Uri.parse('${CardProviderAPI.apiUrl}/cards/$id'));
     var card = CardModel.fromJson(jsonDecode(response.body)['card']);

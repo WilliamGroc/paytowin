@@ -35,6 +35,9 @@ dependencies:
   get: ^4.6.5
   http: 0.13.5
   getwidget: 3.0.1
+  fluttericon: 2.0.0
+  sqflite:
+  path:
 
 dev_dependencies:
   flutter_lints: 2.0.1

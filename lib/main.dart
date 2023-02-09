@@ -31,7 +31,6 @@ class RootApp extends StatelessWidget {
         theme: ThemeData(
             primaryColor: AppColors.primary,
             secondaryHeaderColor: AppColors.secondary,
-            backgroundColor: AppColors.background,
             appBarTheme: const AppBarTheme(backgroundColor: AppColors.primary),
             elevatedButtonTheme: const ElevatedButtonThemeData(style: ButtonStyle())),
         getPages: AppPages.pages);
@@ -40,5 +39,7 @@ class RootApp extends StatelessWidget {
 
 class RootBinding implements Bindings {
   @override
-  void dependencies() {}
+  void dependencies() {
+    Get.put(dependency)
+  }
 }

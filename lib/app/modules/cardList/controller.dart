@@ -24,6 +24,8 @@ class CardListController extends GetxController {
 
   CardListController(this.repository);
 
+  bool get loading => _cards.isEmpty;
+
   @override
   void onInit() async {
     _cards.value = await repository.getAll();

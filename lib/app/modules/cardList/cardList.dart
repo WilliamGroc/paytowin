@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getwidget/getwidget.dart';
 import 'package:paytowin/app/modules/cardList/components/searchBar.dart';
 import 'components/filters/cardFilterModal.dart';
 import 'components/cardTile.dart';
@@ -32,14 +33,12 @@ class CardListPage extends GetView<CardListController> {
                         )
                       ],
                     )),
-                Wrap(
-                  direction: Axis.horizontal,
-                  children: this
-                      .controller
-                      .cards
-                      .map((card) => CardTile(cardData: card))
-                      .toList(),
-                ),
+                this.controller.loading
+                    ? const GFLoader(type: GFLoaderType.android)
+                    : Wrap(
+                        direction: Axis.horizontal,
+                        children: this.controller.cards.map((card) => CardTile(cardData: card)).toList(),
+                      ),
               ],
             )))));
   }
